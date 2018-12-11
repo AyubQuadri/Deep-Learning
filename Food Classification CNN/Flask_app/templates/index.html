@@ -1,0 +1,137 @@
+<head>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.css">
+</head>
+
+<body>
+  <div class="ui container">
+
+  <div class="ui raised container basic segment">
+    <h1 class="ui header">Deep Indian Delicacy</h1>
+    <h3>Classification of Indian Food Images using Convolutional Neural Networks</h3>
+    <br>
+    <span>Predicts the main object in an image</span>
+  </div>
+
+  <div class="ui raised container basic segment">
+
+    <div class="ui raised container segment" style="margin-bottom: 30px;">
+      <div class="ui stackable grid">
+        <div class="ten wide column roro-background-main">
+          <div class="ui centered grid">
+            <div class="row roro-img-row">
+              <div class="ui centered basic segment output-img">
+                <img class="ui fluid image" src="/static/images/foodies.jpg">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="ui centered grid roro-background-secondary input-img">
+            <div class="five column row">
+
+              <div class="column">
+                <a class="ui image"><img class="test-img" src="/static/images/1.JPEG"></a>
+              </div>
+
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/2.JPEG"></a>
+              </div>
+
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/3.JPEG"></a>
+              </div>
+
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/4.JPEG"></a>
+              </div>
+
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/5.JPEG"></a>
+              </div>
+
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/6.JPEG"></a>
+              </div>
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/7.JPEG"></a>
+              </div>
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/8.JPEG"></a>
+              </div>
+              
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/9.JPEG"></a>
+              </div>
+              
+              <div class="column">
+                <a class="ui image bordered"><img class="test-img" src="/static/images/10.JPEG"></a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <br>
+            <h3 class="ui header">Prediction</h3>
+            <br>
+            <h1 id="result_prediction"></h1>
+          </div>
+          <!-- <div class="ui centered grid">
+            <div class="row roro-img-row">
+              <div class="ui centered basic segment output-img">
+                <img class="ui fluid image" src="https://rorodata-tmp.s3.amazonaws.com/golden-gate.jpg">
+              </div>
+            </div> -->
+          </div>
+          <!-- <table class="ui very basic unstackable table">
+            <thead>
+              <tr>
+
+                <th>
+                  <h5 class="ui header">Label</h5>
+                </th>
+
+                <th>
+                  <h5 class="ui header">Probability</h5>
+                </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="cell-string">suspension_bridge</span></td>
+                <td><span class="cell-number">0.45</span></td>
+              </tr>
+              <tr>
+                <td><span class="cell-string">pier</span></td>
+                <td><span class="cell-number">0.40</span></td>
+              </tr>
+              <tr>
+                <td><span class="cell-string">container_ship</span></td>
+                <td><span class="cell-number">0.04</span></td>
+              </tr>
+            </tbody>
+          </table> -->
+        </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(function(){
+      $('.test-img').click(function() {
+        $("#result_prediction").html('loading...');
+        var image = this.src.split("/")[5];
+        //alert(image);
+        $.ajax({url: "/predict/"+image, success: function(result){
+          $("#result_prediction").html(result);
+        }});
+      });
+    });
+  </script>
+
+
+</body>
